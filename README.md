@@ -18,7 +18,12 @@ Why did Jordan set the main entry point to "app" instead of "server" in the pack
 What is the difference between response.send("Hello world!") and the response.json?
 `Answer:` [http://expressjs.com/en/5x/api.html#req](http://expressjs.com/en/5x/api.html#req)
 
-If the request gets an error, does it ever make it to the server or does it get an error before it gets to it? What if a request causes an error and express is no longer running? How are we going to handle this issue?
+Should we gitignore the .env file?
+`Answer:` Yes
+
+If the request gets an error, does it ever make it to the server or does it get an error before it gets to it?
+
+What if a request causes an error and express is no longer running? How are we going to handle this issue?
 
 ### Building routes
 why is it important to have a return inside of an if block when you already have a response? Is there a specific order we have to write our routes in our controllers?
