@@ -3,7 +3,7 @@
 // Import the application
 const app = require('./app');
 
-dotenv = require('dotenv').config();
+require('dotenv').config();
 
 // Have the app listen
 const PORT = process.env.PORT || 9000;

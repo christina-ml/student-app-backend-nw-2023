@@ -7,7 +7,10 @@
     - listen on a port
     - listen on a port determined by an `env` variable
 
-2. Create a /students route
+2. Create a /students route (in `app.js`)
+    - grab the hard-coded data from the demo prompt API and create a json file
+    - create the GET /students route handler
+    - add try/catch to handle errors
 
 3. Create a /students/:id route
 
