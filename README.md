@@ -5,6 +5,7 @@
     - create app.js
     - create our get / handler (healthcheck route)
     - listen on a port
+    - listen on a port determined by an `env` variable
 
 2. Create a /students route
 
