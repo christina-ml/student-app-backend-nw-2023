@@ -69,3 +69,15 @@ PORT=5001 node server.js
 OR
 
 add dotenv to `server.js`
+
+# Connecting the backend to the frontend
+## install cors
+```
+npm install cors
+```
+
+
+# Frontend (separate repo)
+```
+npx create-react-app student-app-frontend-nw-2023
+```
