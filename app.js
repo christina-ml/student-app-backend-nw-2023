@@ -2,13 +2,12 @@
 // Separation of concerns
 
 // Import external stuff (libraries)
-
 // Import express library
 const express = require('express');
 const cors = require('cors');
 
 // Import OUR stuff (our files, our components)
-const studentData = require('./studentData.json');
+const studentsData = require('./studentsData.json');
 
 // Init express application
 const app = express();
@@ -20,34 +19,35 @@ app.use(cors());
 
 // Define our routes
 
-// Healthcheck
-app.get('/', (req, res) => {
-    res.json({ message: 'Service is running' })
-})
-
-app.get('/students', (req, res) => {
-    try {
-        const { students } = studentData;
-        res.status(200).json({ data: students });
-    } catch (err) {
-        res.status(500).json({ error: err.message })
-    }
+// Healthcheck route
+app.get('/', (request, response) => {
+  response.status(200).json({ data: 'Service is running' });
 });
 
-app.get('/students/:id', (req, res) => {
-    try {
-        const { id } = req.params;
-        const { students } = studentData;
+app.get('/students', (request, response) => {
+  try {
+    const { students } = studentsData;
+    response.status(200).json({ data: students });
+  } catch (err) {
+    response.status(500).json({ error: err.message });
+  }
+});
 
-        const student = students.find((oneStudent) => oneStudent.id === id);
-        if (student){
-            res.status(200).json({ data: student });
-        } else {
-            res.status(404).json({ error: `Cound not found student with id of ${id}` })
-        }
-    } catch (err){
-        res.status(500).json({ error: err.message })
+app.get('/students/:id', (request, response) => {
+  try {
+    const { id } = request.params;
+    const { students } = studentsData;
+
+    const student = students.find((el) => el.id === id);
+    if (student) {
+      // return 200
+      return response.status(200).json({ data: student });
     }
-})
+    // return 404
+    response.status(404).json({ error: `Could not find student with id ${id}` });
+  } catch (err) {
+    response.status(500).json({ error: err.message });
+  }
+});
 
 module.exports = app;
