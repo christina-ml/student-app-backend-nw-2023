@@ -1,7 +1,6 @@
 const express = require('express');
 const studentsController = express.Router();
 
-const studentsData = require('../data/studentsData.json');
 const { getAllStudents, getStudentById } = require('../queries/studentsQueries');
 
 studentsController.get('/', (request, response) => {
