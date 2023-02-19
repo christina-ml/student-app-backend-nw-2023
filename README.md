@@ -1,3 +1,47 @@
+# questions 2-19-23 sunday
+
+- Why does Postgres not have an array data type?
+    It's not the proper way to store it in a relational database.
+
+- MongoDB is a non-relational database that stores gigantic javascript objects
+
+- In relational databases like Postgres - storing arrays is something you should never do.
+- Postgres has an array data type, but don't.
+- You should not do it.
+
+Instead, this is the correct way to do this:
+Two separate tables:
+- students table
+- grades table
+
+students: `id`, email ,firstName, lastName
+grades: id, `student_id`, score
+    - `student_id` is the foreign key
+    Example: The grade with id 1, score of 78, foreign key of student_id 1 to correspond with: the students table -> student with id 1
+    
+- How long did it take to move the grades into a separate json file?
+
+Q: If you wanted to give each student additional skills, how would you store that in a relational database?
+    A: It would be similar to what we did with grades, and you would need a separate json file for the skills that are connected to each user by a foreign key. That way you could add as many or as few skills for each user.
+
+- Why does VS code rename the module.exports as `getStudentById: getStudentByIdV2` when using the keyboard shortcut to rename the query name to `getStudentByIdV2`?
+And the studentsControllerV2 has no weird export and gives us what we want: `module.exports = studentsControllerV2`? (00:57:59)
+
+- Why do we rename the route for v2 in App.js as `/v2/students` and not `/students/v2` ? (01:02:30)
+Q: How do you version your API and why would you want to do that?
+A: you need to version your API so you can make changes and not break clients
+When it's ready, you can upgrade to v2. This way you won't break the frontend or other people's clients.
+
+(01:04:53) Testing endpoints:
+shows students with grades (original data)
+// http://localhost:8888/students
+// http://localhost:8888/students/4
+
+shows students without the grades (using v2 data of only students)
+// http://localhost:8888/v2/students
+// http://localhost:8888/v2/students/4
+
+
 ## TODOs
 1. Create a server with a healthcheck route
     - install Express
