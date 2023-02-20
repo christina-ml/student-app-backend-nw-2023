@@ -42,6 +42,40 @@ shows students without the grades (using v2 data of only students)
 // http://localhost:8888/v2/students/4
 
 
+Queries:
+Example: http://localhost:8888/v2/students?start=0&end=100&limit=34&name=Mike
+everything after the question mark
+gets represented as a JavaScript object
+console.log for request.query: `{ start: '0', end: '100', limit: '34', name: 'Mike' }`
+
+http://localhost:8888/v2/students?include=grades
+param called `include` and the name of the table `grades`
+the API will return that related resource
+- The way the API returns it, is it adds a key, such as a grades key, to the student, and is embedded in there.
+
+
+(01:17:09)
+for iterating through the grades `(const grades of grades){}`
+- is there a better variable name than calling it `grades of grades`?
+
+Also, the variable 'grades' is not being used in the for loop from:
+`const { grades } = gradesDataV2;`
+
+the json files were made by Mike using a script.
+
+
+Is Mike in the wrong file? studentsQueries.js instead of studentsQueriesV2.js (01:24:46)
+
+Next week - deploy our backend to Render
+Working on our database
+Can't use databases in Render, so we will use ElephantSQL for our database
+Create our tables, populate our tables with students and grades
+Take our queries and replace those with SQL queries. (Queries that we've written before)
+
+- Testing `studentsQueriesV2.js` -> `getAllStudentsWithGradesV2(id)`
+`http://localhost:8888/v2/students?include=grades`
+should give us all students with their grades
+
 ## TODOs
 1. Create a server with a healthcheck route
     - install Express
